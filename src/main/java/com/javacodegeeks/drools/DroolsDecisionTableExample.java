@@ -25,8 +25,8 @@ public class DroolsDecisionTableExample {
 //		Customer customer = new Customer();
 //		customer.setCoupon("x1");
 		Map<String, String> tags = new HashMap<String, String>();
-		tags.put("X1", "X1");
-		tags.put("X2", "X2");
+		tags.put("X1", "abc");
+		tags.put("X2", "def");
 		Analysis a = new Analysis();
 		a.setTags(tags);
 		session.execute(a);

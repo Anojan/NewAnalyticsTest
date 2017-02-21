@@ -6,7 +6,7 @@ public class Analysis {
 	private Map<String, String> results;
 	private Map<String, String> tags;
 	private String url;
-	private boolean debug;
+	private String debug;
 
 	public Map<String, String> getResults() {
 		return results;
@@ -32,15 +32,15 @@ public class Analysis {
 		this.url = url;
 	}
 
-	public boolean contains(String tag, String value) {
+	public boolean check(String tag, String value) {
 		return (tags.get(tag).equals(value)) ? true : false;
 	}
 
-	public boolean isDebug() {
+	public String getDebug() {
 		return debug;
 	}
 
-	public void setDebug(boolean debug) {
+	public void setDebug(String debug) {
 		System.out.println(debug);
 		this.debug = debug;
 	}
