@@ -33,7 +33,8 @@ public class Analysis {
 	}
 
 	public boolean check(String tag, String value) {
-		return (tags.get(tag).equals(value)) ? true : false;
+		String a = (tags.get(tag) != null) ? tags.get(tag) : "";
+		return (a.equals(value)) ? true : false;
 	}
 
 	public String getDebug() {
@@ -44,7 +45,7 @@ public class Analysis {
 		System.out.println(debug);
 		this.debug = debug;
 	}
-	
+
 	public void name() {
 		System.err.println("done!!");
 	}

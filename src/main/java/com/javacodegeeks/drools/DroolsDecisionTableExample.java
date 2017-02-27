@@ -36,7 +36,7 @@ public class DroolsDecisionTableExample {
 //		System.out.println("Second Customer\n" + customer);
 	}
 
-	private static KnowledgeBase createKnowledgeBaseFromSpreadsheet()
+	public static KnowledgeBase createKnowledgeBaseFromSpreadsheet()
 			throws Exception {
 		DecisionTableConfiguration dtconf = KnowledgeBuilderFactory
 				.newDecisionTableConfiguration();
