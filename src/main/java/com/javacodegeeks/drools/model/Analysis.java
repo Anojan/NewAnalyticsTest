@@ -1,15 +1,23 @@
 package com.javacodegeeks.drools.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Analysis {
-	private Map<String, String> results;
+
 	private Map<String, String> tags;
 	private String url;
-	private String debug;
+	private List<Analysis> result = new ArrayList<Analysis>();
+	private String keyValuePair;
 
-	public Map<String, String> getResults() {
-		return results;
+	public String getKeyValuePair() {
+		return keyValuePair;
+	}
+
+	public void setKeyValuePair(String keyValuePair) {
+		this.keyValuePair = keyValuePair;
 	}
 
 	public Map<String, String> getTags() {
@@ -20,10 +28,6 @@ public class Analysis {
 		return url;
 	}
 
-	public void setResults(Map<String, String> results) {
-		this.results = results;
-	}
-
 	public void setTags(Map<String, String> tags) {
 		this.tags = tags;
 	}
@@ -32,22 +36,44 @@ public class Analysis {
 		this.url = url;
 	}
 
-	public boolean check(String tag, String value) {
-		String a = (tags.get(tag) != null) ? tags.get(tag) : "";
-		return (a.equals(value)) ? true : false;
+	public boolean checkUrl(String url) {
+		return this.url.equals(url);
 	}
 
-	public String getDebug() {
-		return debug;
+	public List<Analysis> getResult() {
+		return result;
 	}
 
-	public void setDebug(String debug) {
-		System.out.println(debug);
-		this.debug = debug;
+	public void setResult() {
+		Analysis thisObj = new Analysis();
+		thisObj.setUrl(this.url);
+		thisObj.setKeyValuePair(this.keyValuePair);
+		this.result.add(thisObj);
+		System.out.println("Success: " + result);
 	}
 
-	public void name() {
-		System.err.println("done!!");
+	public boolean checkKey(String keyValuePair) {
+		this.keyValuePair = keyValuePair;
+		String[] pair = keyValuePair.split(Pattern.quote(":"));
+		String key = pair[0];
+		String value = pair[1];
+		if (null != key || null != value)
+		return tags.get(key).equals(value);
+		return false;
+	}
+	
+	public String getAll() {
+		String all = "";
+		for (Analysis analysis : result) {
+			all += analysis.toString() + ","; 
+		}
+		return all;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "<" + this.url + ">[" + this.keyValuePair + "]{" + getAll() + "}" ;
 	}
 
 }
